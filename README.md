@@ -6,12 +6,12 @@ NOTE:
 - Binary has be `dockerized` and is based on [busybox](https://hub.docker.com/_/busybox). Image size, according to `balena-cli` is 1.59 MB.
 
 ```
-[Info]     ┌─────────┬────────────┬─────────────────────┐
-[Info]     │ Service │ Image Size │ Build Time          │
-[Info]     ├─────────┼────────────┼─────────────────────┤
-[Info]     │ uxplay  │ 1.59 MB    │ 1 minute, 7 seconds │
-[Info]     └─────────┴────────────┴─────────────────────┘
-[Info]     Build finished in 2 minutes, 11 seconds
+[Info]     ┌─────────┬────────────┬────────────┬────────────┐
+[Info]     │ Service │ Image Size │ Delta Size │ Build Time │
+[Info]     ├─────────┼────────────┼────────────┼────────────┤
+[Info]     │ uxplay  │ 17.04 MB   │ 15.34 MB   │ 27 seconds │
+[Info]     └─────────┴────────────┴────────────┴────────────┘
+[Info]     Build finished in 1 minute, 54 seconds
                             \
                              \
                               \\
