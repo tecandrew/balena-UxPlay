@@ -39,6 +39,8 @@ NOTE:
 
 # Configuration
 
+**NOTE: still testing params**
+
 | ENV Name | Values | Default | Description |
 |----------|--------|---------|-------------|
 | UXPLAY_NAME | text | not set | | The name that appears offering AirPlay services |
