@@ -37,7 +37,7 @@ WORKDIR /usr/src/app
 
 RUN pip3 install git+https://github.com/larsks/dockerize
 
-RUN dockerize -n --verbose -g video -g audio -o /rootfs/ /usr/local/bin/UxPlay &&\
+RUN dockerize -n --verbose -g video -g audio -o /rootfs/ /usr/local/bin/uxplay &&\
     rm /rootfs/Dockerfile
 
 # raspberry pi zero arch
