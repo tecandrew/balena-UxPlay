@@ -24,7 +24,7 @@ ENV CFLAGS -D_FILE_OFFSET_BITS=64
 ENV CXXFLAGS -D_FILE_OFFSET_BITS=64
 
 # run cmake twice (weird bug)
-RUN mkdir build && cd build && cmake ../ && \
+RUN mkdir build && cd build && cmake ../ || true && \
     cmake .. -DCMAKE_CXX_FLAGS="-O3" -DCMAKE_C_FLAGS="-O3" &&\
     make -j$(nproc) &&\
     make install
@@ -49,5 +49,5 @@ WORKDIR /usr/src/app/
 COPY start.sh ./
 COPY VERSION ./
 
-# RUN chmod +x ./start.sh
-# CMD ["sh", "./start.sh"]
+RUN chmod +x ./start.sh
+CMD ["sh", "./start.sh"]

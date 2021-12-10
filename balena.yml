@@ -1,0 +1,46 @@
+name: balena-UxPlay
+type: sw.application
+description: >-
+  Turns your raspberry pi into a full AirPlay Server (screen mirror & audio-only playback) using UxPlay.
+joinable: false
+post-provisioning: >-
+  ## Usage instructions
+  **Application download**
+  BE PATIENT. Allow some time for balenaOS to init & UxPlay to download and start.
+  __Note: The device will reboot to apply some device configurations.__
+  **Usage**
+  When the download is complete the application will start. You should see
+  an Airplay device from your Apple devices. It will be broadcast with the name Airplay@hostname.
+  You can cast using your Apple devices. Use Screen Mirroring from the Control Center:
+  - [iOS devices](https://support.apple.com/en-us/HT204289#mirroriOS)
+  - [macOS devices](https://support.apple.com/guide/imac/use-airplay-apdf1417128d/mac)
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/tecandrew/balena-UxPlay.git'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/tecandrew/balena-UxPlay/master/logo.png
+data:
+  applicationEnvironmentVariables:
+    - UXPLAY_NAME: ""
+    - WXH_RFRSHRATE: 1920x1080@60
+    - UXPLAY_FPSLIMIT: 30
+    - UXPLAY_FLIP: ""
+    - UXPLAY_ROTATE: ""
+    - UXPLAY_VIDEOSINK: "autovideosink"
+    - UXPLAY_AUDIOSINK: "autoaudiosink"
+    - UXPLAY_TIMEOUT: 0
+  applicationConfigVariables:
+    - BALENA_HOST_CONFIG_gpu_mem: 256
+    - BALENA_HOST_CONFIG_gpu_mem_512: 128
+  defaultDeviceType: raspberrypi3
+  supportedDeviceTypes:
+    - raspberry-pi
+    - raspberry-pi2
+    - raspberrypi3
+    - raspberrypi4-64
+version: 0.1.0
