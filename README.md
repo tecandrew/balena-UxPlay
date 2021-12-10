@@ -3,7 +3,7 @@
 Turns your raspberry pi into a full AirPlay Server (screen mirror & audio-only playback) using [UxPlay](https://github.com/FDH2/UxPlay).
 
 NOTE:
-- Binary has be `dockerized` and is based on [busybox](https://hub.docker.com/_/busybox). Image size, according to `balena-cli` is 1.59 MB.
+- Binary has be `dockerized` and is based on [busybox](https://hub.docker.com/_/busybox).
 
 ```
 [Info]     ┌─────────┬────────────┬────────────┬────────────┐
