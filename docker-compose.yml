@@ -1,6 +1,6 @@
 version: '3'
 services:
-  rpiplay:
+  uxplay:
     build: ./
     privileged: true
     restart: always
