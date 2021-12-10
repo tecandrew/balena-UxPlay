@@ -48,6 +48,6 @@ COPY --from=builder /rootfs/ ./
 WORKDIR /usr/src/app/
 COPY start.sh ./
 COPY VERSION ./
-
+ENV UDEV=1
 RUN chmod +x ./start.sh
 CMD ["sh", "./start.sh"]
