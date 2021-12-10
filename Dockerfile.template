@@ -11,12 +11,14 @@ RUN install_packages libraspberrypi-dev libraspberrypi-doc
 
 WORKDIR /usr/src/app/
 
+# maybe include pulseaudio ?
 RUN install_packages libssl-dev \
     libplist-dev \
     libavahi-compat-libdnssd-dev \
     libgstreamer1.0-dev \
     libgstreamer-plugins-base1.0-dev \
     gstreamer1.0-libav \
+    gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad
 
 COPY ./UxPlay/ .
@@ -44,6 +46,11 @@ RUN dockerize -n --verbose -g video -g audio -o /rootfs/ /usr/local/bin/uxplay &
 FROM --platform=linux/arm/v6 busybox:stable
 
 COPY --from=builder /rootfs/ ./
+COPY --from=builder /usr/lib/arm-linux-gnueabihf/gstreamer1.0/gstreamer-1.0 /usr/local/bin/
+# COPY --from=builder /usr/lib/arm-linux-gnueabihf/gstreamer-1.0/ /usr/local/lib/gstreamer-1.0
+COPY --from=builder /usr/lib/arm-linux-gnueabihf/ /usr/local/lib/
+COPY --from=builder  /lib/arm-linux-gnueabihf/ /usr/local/lib
+COPY --from=builder  /opt/vc/lib /opt/vc/lib
 
 WORKDIR /usr/src/app/
 COPY start.sh ./
