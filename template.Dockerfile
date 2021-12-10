@@ -4,6 +4,7 @@ FROM balenalib/rpi-raspbian:buster AS builder
 RUN install_packages cmake \
                      libavahi-compat-libdnssd-dev libplist-dev libssl-dev \
                      build-essential\
+                     pkg-config \
                      git
 
 RUN install_packages libraspberrypi-dev libraspberrypi-doc
@@ -18,12 +19,14 @@ RUN install_packages libssl-dev \
     gstreamer1.0-libav \
     gstreamer1.0-plugins-bad
 
-COPY UxPlay/ .
+COPY ./UxPlay/ .
+ENV CFLAGS -D_FILE_OFFSET_BITS=64
+ENV CXXFLAGS -D_FILE_OFFSET_BITS=64
 
-WORKDIR /usr/src/app/UxPlay/build
-
-RUN cmake --DCMAKE_CXX_FLAGS="-O3" --DCMAKE_C_FLAGS="-O3" .. &&\
-    make -j &&\
+# run cmake twice (weird bug)
+RUN mkdir build && cd build && cmake ../ && \
+    cmake .. -DCMAKE_CXX_FLAGS="-O3" -DCMAKE_C_FLAGS="-O3" &&\
+    make -j$(nproc) &&\
     make install
 
 RUN install_packages python3-pip python3-setuptools rsync
