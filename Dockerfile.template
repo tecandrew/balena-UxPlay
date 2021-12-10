@@ -52,6 +52,10 @@ COPY --from=builder /usr/lib/arm-linux-gnueabihf/ /usr/local/lib/
 COPY --from=builder  /lib/arm-linux-gnueabihf/ /usr/local/lib
 COPY --from=builder  /opt/vc/lib /opt/vc/lib
 
+ENV LD_LIBRARY_PATH /opt/vc/lib:/usr/local/lib:$LD_LIBRARY_PATH
+ENV GST_PLUGIN_PATH /usr/local/lib/gstreamer-1.0:$GST_PLUGIN_PATH
+ENV GST_PLUGIN_SCANNER /usr/local/bin/gst-plugin-scanner
+
 WORKDIR /usr/src/app/
 COPY start.sh ./
 COPY VERSION ./

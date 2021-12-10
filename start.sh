@@ -2,6 +2,7 @@
 
 export LD_LIBRARY_PATH=/opt/vc/lib:/usr/local/lib:$LD_LIBRARY_PATH
 export GST_PLUGIN_PATH=/usr/local/lib/gstreamer-1.0:$GST_PLUGIN_PATH
+export GST_PLUGIN_SCANNER=/usr/local/bin/gst-plugin-scanner
 
 DEVICE_NAME="${UXPLAY_NAME:="uxplay@$HOSTNAME"}"
 # WXH_RFRSHRATE="${UXPLAY_WXH_RFRSHRATE:="1920x1080@60"}"
