@@ -11,7 +11,6 @@ RUN install_packages libraspberrypi-dev libraspberrypi-doc
 
 WORKDIR /usr/src/app/
 
-# maybe include pulseaudio ?
 RUN install_packages libssl-dev \
     libplist-dev \
     libavahi-compat-libdnssd-dev \
@@ -19,7 +18,8 @@ RUN install_packages libssl-dev \
     libgstreamer-plugins-base1.0-dev \
     gstreamer1.0-libav \
     gstreamer1.0-plugins-good \
-    gstreamer1.0-plugins-bad
+    gstreamer1.0-plugins-bad \
+    pulseaudio
 
 COPY ./UxPlay/ .
 ENV CFLAGS -D_FILE_OFFSET_BITS=64
